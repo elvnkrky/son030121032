@@ -1,45 +1,45 @@
 import 'dart:convert';
 
 class Desiredjobtypes {
-   Desiredjobtypes({
+  const Desiredjobtypes({
     this.isBlocked,
-    required this.companyName,
     required this.id,
+    required this.companyName,
   });
 
   factory Desiredjobtypes.fromMap(Map<String, dynamic> map) {
     return Desiredjobtypes(
       isBlocked: map['isBlocked'],
-      companyName: map['companyName'],
       id: map['id'].toInt(),
+      companyName: map['companyName'],
     );
   }
 
   factory Desiredjobtypes.fromJson(String source) => Desiredjobtypes.fromMap(json.decode(source));
 
-  late final bool? isBlocked;
-
-  final String companyName;
+  final bool? isBlocked;
 
   final int id;
 
+  final String companyName;
+
   Desiredjobtypes copyWith({
     bool? isBlocked,
-    String? companyName,
     int? id,
+    String? companyName,
   }) {
     return Desiredjobtypes(
       isBlocked: isBlocked ?? this.isBlocked,
-      companyName: companyName ?? this.companyName,
       id: id ?? this.id,
+      companyName: companyName ?? this.companyName,
     );
   }
 
   Map<String, dynamic> toMap() {
     return {
       'isBlocked': isBlocked,
-      'companyName': companyName,
       'id': id,
+      'companyName': companyName,
     };
   }
 
@@ -51,17 +51,17 @@ class Desiredjobtypes {
 
     return other is Desiredjobtypes &&
         other.isBlocked == isBlocked &&
-        other.companyName == companyName &&
-        other.id == id;
+        other.id == id &&
+        other.companyName == companyName;
   }
 
   @override
   int get hashCode {
-    return isBlocked.hashCode ^ companyName.hashCode ^ id.hashCode;
+    return isBlocked.hashCode ^ id.hashCode ^ companyName.hashCode;
   }
 
   @override
   String toString() {
-    return 'Desiredjobtypes(isBlocked: $isBlocked, companyName: $companyName, id: $id)';
+    return 'Desiredjobtypes(isBlocked: $isBlocked, id: $id, companyName: $companyName)';
   }
 }

@@ -1,52 +1,52 @@
 import 'dart:convert';
 
 class RemoveJobs {
-    RemoveJobs({
-    required this.id,
-    this.isBlocked,
+  const RemoveJobs({
     this.companyName,
+    required this.id,
     this.totalDays,
+    this.isBlocked,
   });
 
   factory RemoveJobs.fromMap(Map<String, dynamic> map) {
     return RemoveJobs(
-      id: map['id'].toInt(),
-      isBlocked: map['isBlocked'],
       companyName: map['companyName'],
+      id: map['id'].toInt(),
       totalDays: map['totalDays'],
+      isBlocked: map['isBlocked'],
     );
   }
 
   factory RemoveJobs.fromJson(String source) => RemoveJobs.fromMap(json.decode(source));
 
-  final int id;
-
-  late final bool? isBlocked;
-
   final String? companyName;
+
+  final int id;
 
   final String? totalDays;
 
+  final bool? isBlocked;
+
   RemoveJobs copyWith({
-    int? id,
-    bool? isBlocked,
     String? companyName,
+    int? id,
     String? totalDays,
+    bool? isBlocked,
   }) {
     return RemoveJobs(
-      id: id ?? this.id,
-      isBlocked: isBlocked ?? this.isBlocked,
       companyName: companyName ?? this.companyName,
+      id: id ?? this.id,
       totalDays: totalDays ?? this.totalDays,
+      isBlocked: isBlocked ?? this.isBlocked,
     );
   }
 
   Map<String, dynamic> toMap() {
     return {
-      'id': id,
-      'isBlocked': isBlocked,
       'companyName': companyName,
+      'id': id,
       'totalDays': totalDays,
+      'isBlocked': isBlocked,
     };
   }
 
@@ -57,19 +57,19 @@ class RemoveJobs {
     if (identical(this, other)) return true;
 
     return other is RemoveJobs &&
-        other.id == id &&
-        other.isBlocked == isBlocked &&
         other.companyName == companyName &&
-        other.totalDays == totalDays;
+        other.id == id &&
+        other.totalDays == totalDays &&
+        other.isBlocked == isBlocked;
   }
 
   @override
   int get hashCode {
-    return id.hashCode ^ isBlocked.hashCode ^ companyName.hashCode ^ totalDays.hashCode;
+    return companyName.hashCode ^ id.hashCode ^ totalDays.hashCode ^ isBlocked.hashCode;
   }
 
   @override
   String toString() {
-    return 'RemoveJobs(id: $id, isBlocked: $isBlocked, companyName: $companyName, totalDays: $totalDays)';
+    return 'RemoveJobs(companyName: $companyName, id: $id, totalDays: $totalDays, isBlocked: $isBlocked)';
   }
 }

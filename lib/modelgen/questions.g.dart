@@ -2,65 +2,65 @@ import 'dart:convert';
 
 class Questions {
   const Questions({
-    required this.id,
     this.companyName,
-    this.companyImage,
-    this.totalDays,
-    this.dateAnswere,
     this.totalReview,
+    this.companyImage,
+    this.dateAnswere,
+    this.totalDays,
+    required this.id,
   });
 
   factory Questions.fromMap(Map<String, dynamic> map) {
     return Questions(
-      id: map['id'].toInt(),
       companyName: map['companyName'],
-      companyImage: map['companyImage'],
-      totalDays: map['totalDays'],
-      dateAnswere: map['dateAnswere'],
       totalReview: map['totalReview'],
+      companyImage: map['companyImage'],
+      dateAnswere: map['dateAnswere'],
+      totalDays: map['totalDays'],
+      id: map['id'].toInt(),
     );
   }
 
   factory Questions.fromJson(String source) => Questions.fromMap(json.decode(source));
 
-  final int id;
-
   final String? companyName;
-
-  final String? companyImage;
-
-  final String? totalDays;
-
-  final String? dateAnswere;
 
   final String? totalReview;
 
+  final String? companyImage;
+
+  final String? dateAnswere;
+
+  final String? totalDays;
+
+  final int id;
+
   Questions copyWith({
-    int? id,
     String? companyName,
-    String? companyImage,
-    String? totalDays,
-    String? dateAnswere,
     String? totalReview,
+    String? companyImage,
+    String? dateAnswere,
+    String? totalDays,
+    int? id,
   }) {
     return Questions(
-      id: id ?? this.id,
       companyName: companyName ?? this.companyName,
-      companyImage: companyImage ?? this.companyImage,
-      totalDays: totalDays ?? this.totalDays,
-      dateAnswere: dateAnswere ?? this.dateAnswere,
       totalReview: totalReview ?? this.totalReview,
+      companyImage: companyImage ?? this.companyImage,
+      dateAnswere: dateAnswere ?? this.dateAnswere,
+      totalDays: totalDays ?? this.totalDays,
+      id: id ?? this.id,
     );
   }
 
   Map<String, dynamic> toMap() {
     return {
-      'id': id,
       'companyName': companyName,
-      'companyImage': companyImage,
-      'totalDays': totalDays,
-      'dateAnswere': dateAnswere,
       'totalReview': totalReview,
+      'companyImage': companyImage,
+      'dateAnswere': dateAnswere,
+      'totalDays': totalDays,
+      'id': id,
     };
   }
 
@@ -71,26 +71,26 @@ class Questions {
     if (identical(this, other)) return true;
 
     return other is Questions &&
-        other.id == id &&
         other.companyName == companyName &&
+        other.totalReview == totalReview &&
         other.companyImage == companyImage &&
-        other.totalDays == totalDays &&
         other.dateAnswere == dateAnswere &&
-        other.totalReview == totalReview;
+        other.totalDays == totalDays &&
+        other.id == id;
   }
 
   @override
   int get hashCode {
-    return id.hashCode ^
-        companyName.hashCode ^
+    return companyName.hashCode ^
+        totalReview.hashCode ^
         companyImage.hashCode ^
-        totalDays.hashCode ^
         dateAnswere.hashCode ^
-        totalReview.hashCode;
+        totalDays.hashCode ^
+        id.hashCode;
   }
 
   @override
   String toString() {
-    return 'Questions(id: $id, companyName: $companyName, companyImage: $companyImage, totalDays: $totalDays, dateAnswere: $dateAnswere, totalReview: $totalReview)';
+    return 'Questions(companyName: $companyName, totalReview: $totalReview, companyImage: $companyImage, dateAnswere: $dateAnswere, totalDays: $totalDays, id: $id)';
   }
 }

@@ -2,37 +2,37 @@ import 'dart:convert';
 
 class Email {
   const Email({
-    required this.id,
     this.email,
+    required this.id,
   });
 
   factory Email.fromMap(Map<String, dynamic> map) {
     return Email(
-      id: map['id'].toInt(),
       email: map['email'],
+      id: map['id'].toInt(),
     );
   }
 
   factory Email.fromJson(String source) => Email.fromMap(json.decode(source));
 
-  final int id;
-
   final String? email;
 
+  final int id;
+
   Email copyWith({
-    int? id,
     String? email,
+    int? id,
   }) {
     return Email(
-      id: id ?? this.id,
       email: email ?? this.email,
+      id: id ?? this.id,
     );
   }
 
   Map<String, dynamic> toMap() {
     return {
-      'id': id,
       'email': email,
+      'id': id,
     };
   }
 
@@ -42,16 +42,16 @@ class Email {
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
 
-    return other is Email && other.id == id && other.email == email;
+    return other is Email && other.email == email && other.id == id;
   }
 
   @override
   int get hashCode {
-    return id.hashCode ^ email.hashCode;
+    return email.hashCode ^ id.hashCode;
   }
 
   @override
   String toString() {
-    return 'Email(id: $id, email: $email)';
+    return 'Email(email: $email, id: $id)';
   }
 }

@@ -1,17 +1,17 @@
 import 'dart:convert';
 
 class Skilldata {
-    Skilldata({
+  const Skilldata({
     required this.companyName,
-    this.selectSkill,
     required this.id,
+    this.selectSkill,
   });
 
   factory Skilldata.fromMap(Map<String, dynamic> map) {
     return Skilldata(
       companyName: map['companyName'],
-      selectSkill: map['selectSkill'],
       id: map['id'].toInt(),
+      selectSkill: map['selectSkill'],
     );
   }
 
@@ -19,29 +19,27 @@ class Skilldata {
 
   final String companyName;
 
-  late final bool? selectSkill;
-
   final int id;
 
-  set isBlocked(bool isBlocked) {}
+  final bool? selectSkill;
 
   Skilldata copyWith({
     String? companyName,
-    bool? selectSkill,
     int? id,
+    bool? selectSkill,
   }) {
     return Skilldata(
       companyName: companyName ?? this.companyName,
-      selectSkill: selectSkill ?? this.selectSkill,
       id: id ?? this.id,
+      selectSkill: selectSkill ?? this.selectSkill,
     );
   }
 
   Map<String, dynamic> toMap() {
     return {
       'companyName': companyName,
-      'selectSkill': selectSkill,
       'id': id,
+      'selectSkill': selectSkill,
     };
   }
 
@@ -51,16 +49,16 @@ class Skilldata {
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
 
-    return other is Skilldata && other.companyName == companyName && other.selectSkill == selectSkill && other.id == id;
+    return other is Skilldata && other.companyName == companyName && other.id == id && other.selectSkill == selectSkill;
   }
 
   @override
   int get hashCode {
-    return companyName.hashCode ^ selectSkill.hashCode ^ id.hashCode;
+    return companyName.hashCode ^ id.hashCode ^ selectSkill.hashCode;
   }
 
   @override
   String toString() {
-    return 'Skilldata(companyName: $companyName, selectSkill: $selectSkill, id: $id)';
+    return 'Skilldata(companyName: $companyName, id: $id, selectSkill: $selectSkill)';
   }
 }

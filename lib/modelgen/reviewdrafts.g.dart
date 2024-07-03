@@ -2,48 +2,46 @@ import 'dart:convert';
 
 class Reviewdrafts {
   const Reviewdrafts({
+    required this.id,
+    this.index,
     this.deegryCompleteYear,
     this.deegryDescription,
-    this.totalDays,
-    this.jobLocation,
-    this.totalReview,
     this.deegryName,
     this.companyName,
     this.companyImage,
+    this.totalDays,
     this.dateAnswere,
-    required this.id,
+    this.jobLocation,
+    this.totalReview,
     this.jobDescription,
-    this.index,
   });
 
   factory Reviewdrafts.fromMap(Map<String, dynamic> map) {
     return Reviewdrafts(
+      id: map['id'].toInt(),
+      index: map['index']?.toInt(),
       deegryCompleteYear: map['deegryCompleteYear'],
       deegryDescription: map['deegryDescription'],
-      totalDays: map['totalDays'],
-      jobLocation: map['jobLocation'],
-      totalReview: map['totalReview'],
       deegryName: map['deegryName'],
       companyName: map['companyName'],
       companyImage: map['companyImage'],
+      totalDays: map['totalDays'],
       dateAnswere: map['dateAnswere'],
-      id: map['id'].toInt(),
+      jobLocation: map['jobLocation'],
+      totalReview: map['totalReview'],
       jobDescription: map['jobDescription'],
-      index: map['index']?.toInt(),
     );
   }
 
   factory Reviewdrafts.fromJson(String source) => Reviewdrafts.fromMap(json.decode(source));
 
+  final int id;
+
+  final int? index;
+
   final String? deegryCompleteYear;
 
   final String? deegryDescription;
-
-  final String? totalDays;
-
-  final String? jobLocation;
-
-  final String? totalReview;
 
   final String? deegryName;
 
@@ -51,58 +49,60 @@ class Reviewdrafts {
 
   final String? companyImage;
 
+  final String? totalDays;
+
   final String? dateAnswere;
 
-  final int id;
+  final String? jobLocation;
+
+  final String? totalReview;
 
   final String? jobDescription;
 
-  final int? index;
-
   Reviewdrafts copyWith({
+    int? id,
+    int? index,
     String? deegryCompleteYear,
     String? deegryDescription,
-    String? totalDays,
-    String? jobLocation,
-    String? totalReview,
     String? deegryName,
     String? companyName,
     String? companyImage,
+    String? totalDays,
     String? dateAnswere,
-    int? id,
+    String? jobLocation,
+    String? totalReview,
     String? jobDescription,
-    int? index,
   }) {
     return Reviewdrafts(
+      id: id ?? this.id,
+      index: index ?? this.index,
       deegryCompleteYear: deegryCompleteYear ?? this.deegryCompleteYear,
       deegryDescription: deegryDescription ?? this.deegryDescription,
-      totalDays: totalDays ?? this.totalDays,
-      jobLocation: jobLocation ?? this.jobLocation,
-      totalReview: totalReview ?? this.totalReview,
       deegryName: deegryName ?? this.deegryName,
       companyName: companyName ?? this.companyName,
       companyImage: companyImage ?? this.companyImage,
+      totalDays: totalDays ?? this.totalDays,
       dateAnswere: dateAnswere ?? this.dateAnswere,
-      id: id ?? this.id,
+      jobLocation: jobLocation ?? this.jobLocation,
+      totalReview: totalReview ?? this.totalReview,
       jobDescription: jobDescription ?? this.jobDescription,
-      index: index ?? this.index,
     );
   }
 
   Map<String, dynamic> toMap() {
     return {
+      'id': id,
+      'index': index,
       'deegryCompleteYear': deegryCompleteYear,
       'deegryDescription': deegryDescription,
-      'totalDays': totalDays,
-      'jobLocation': jobLocation,
-      'totalReview': totalReview,
       'deegryName': deegryName,
       'companyName': companyName,
       'companyImage': companyImage,
+      'totalDays': totalDays,
       'dateAnswere': dateAnswere,
-      'id': id,
+      'jobLocation': jobLocation,
+      'totalReview': totalReview,
       'jobDescription': jobDescription,
-      'index': index,
     };
   }
 
@@ -113,38 +113,38 @@ class Reviewdrafts {
     if (identical(this, other)) return true;
 
     return other is Reviewdrafts &&
+        other.id == id &&
+        other.index == index &&
         other.deegryCompleteYear == deegryCompleteYear &&
         other.deegryDescription == deegryDescription &&
-        other.totalDays == totalDays &&
-        other.jobLocation == jobLocation &&
-        other.totalReview == totalReview &&
         other.deegryName == deegryName &&
         other.companyName == companyName &&
         other.companyImage == companyImage &&
+        other.totalDays == totalDays &&
         other.dateAnswere == dateAnswere &&
-        other.id == id &&
-        other.jobDescription == jobDescription &&
-        other.index == index;
+        other.jobLocation == jobLocation &&
+        other.totalReview == totalReview &&
+        other.jobDescription == jobDescription;
   }
 
   @override
   int get hashCode {
-    return deegryCompleteYear.hashCode ^
+    return id.hashCode ^
+        index.hashCode ^
+        deegryCompleteYear.hashCode ^
         deegryDescription.hashCode ^
-        totalDays.hashCode ^
-        jobLocation.hashCode ^
-        totalReview.hashCode ^
         deegryName.hashCode ^
         companyName.hashCode ^
         companyImage.hashCode ^
+        totalDays.hashCode ^
         dateAnswere.hashCode ^
-        id.hashCode ^
-        jobDescription.hashCode ^
-        index.hashCode;
+        jobLocation.hashCode ^
+        totalReview.hashCode ^
+        jobDescription.hashCode;
   }
 
   @override
   String toString() {
-    return 'Reviewdrafts(deegryCompleteYear: $deegryCompleteYear, deegryDescription: $deegryDescription, totalDays: $totalDays, jobLocation: $jobLocation, totalReview: $totalReview, deegryName: $deegryName, companyName: $companyName, companyImage: $companyImage, dateAnswere: $dateAnswere, id: $id, jobDescription: $jobDescription, index: $index)';
+    return 'Reviewdrafts(id: $id, index: $index, deegryCompleteYear: $deegryCompleteYear, deegryDescription: $deegryDescription, deegryName: $deegryName, companyName: $companyName, companyImage: $companyImage, totalDays: $totalDays, dateAnswere: $dateAnswere, jobLocation: $jobLocation, totalReview: $totalReview, jobDescription: $jobDescription)';
   }
 }

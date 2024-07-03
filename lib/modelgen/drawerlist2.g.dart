@@ -3,21 +3,21 @@ import 'dart:convert';
 class Drawerlist2 {
   const Drawerlist2({
     this.widget,
-    this.companyImage,
     required this.id,
     this.selectSkill,
-    this.totalReview,
     this.companyName,
+    this.totalReview,
+    this.companyImage,
   });
 
   factory Drawerlist2.fromMap(Map<String, dynamic> map) {
     return Drawerlist2(
       widget: map['widget'],
-      companyImage: map['companyImage'],
       id: map['id'].toInt(),
       selectSkill: map['selectSkill'],
-      totalReview: map['totalReview'],
       companyName: map['companyName'],
+      totalReview: map['totalReview'],
+      companyImage: map['companyImage'],
     );
   }
 
@@ -25,42 +25,42 @@ class Drawerlist2 {
 
   final String? widget;
 
-  final String? companyImage;
-
   final int id;
 
   final bool? selectSkill;
 
+  final String? companyName;
+
   final String? totalReview;
 
-  final String? companyName;
+  final String? companyImage;
 
   Drawerlist2 copyWith({
     String? widget,
-    String? companyImage,
     int? id,
     bool? selectSkill,
-    String? totalReview,
     String? companyName,
+    String? totalReview,
+    String? companyImage,
   }) {
     return Drawerlist2(
       widget: widget ?? this.widget,
-      companyImage: companyImage ?? this.companyImage,
       id: id ?? this.id,
       selectSkill: selectSkill ?? this.selectSkill,
-      totalReview: totalReview ?? this.totalReview,
       companyName: companyName ?? this.companyName,
+      totalReview: totalReview ?? this.totalReview,
+      companyImage: companyImage ?? this.companyImage,
     );
   }
 
   Map<String, dynamic> toMap() {
     return {
       'widget': widget,
-      'companyImage': companyImage,
       'id': id,
       'selectSkill': selectSkill,
-      'totalReview': totalReview,
       'companyName': companyName,
+      'totalReview': totalReview,
+      'companyImage': companyImage,
     };
   }
 
@@ -72,25 +72,25 @@ class Drawerlist2 {
 
     return other is Drawerlist2 &&
         other.widget == widget &&
-        other.companyImage == companyImage &&
         other.id == id &&
         other.selectSkill == selectSkill &&
+        other.companyName == companyName &&
         other.totalReview == totalReview &&
-        other.companyName == companyName;
+        other.companyImage == companyImage;
   }
 
   @override
   int get hashCode {
     return widget.hashCode ^
-        companyImage.hashCode ^
         id.hashCode ^
         selectSkill.hashCode ^
+        companyName.hashCode ^
         totalReview.hashCode ^
-        companyName.hashCode;
+        companyImage.hashCode;
   }
 
   @override
   String toString() {
-    return 'Drawerlist2(widget: $widget, companyImage: $companyImage, id: $id, selectSkill: $selectSkill, totalReview: $totalReview, companyName: $companyName)';
+    return 'Drawerlist2(widget: $widget, id: $id, selectSkill: $selectSkill, companyName: $companyName, totalReview: $totalReview, companyImage: $companyImage)';
   }
 }

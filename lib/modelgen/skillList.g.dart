@@ -1,17 +1,17 @@
 import 'dart:convert';
 
 class SkillList {
-   SkillList({
+  const SkillList({
     required this.id,
-    this.isBlocked,
     this.companyName,
+    this.isBlocked,
   });
 
   factory SkillList.fromMap(Map<String, dynamic> map) {
     return SkillList(
       id: map['id'].toInt(),
-      isBlocked: map['isBlocked'],
       companyName: map['companyName'],
+      isBlocked: map['isBlocked'],
     );
   }
 
@@ -19,27 +19,27 @@ class SkillList {
 
   final int id;
 
-  late final bool? isBlocked;
-
   final String? companyName;
+
+  final bool? isBlocked;
 
   SkillList copyWith({
     int? id,
-    bool? isBlocked,
     String? companyName,
+    bool? isBlocked,
   }) {
     return SkillList(
       id: id ?? this.id,
-      isBlocked: isBlocked ?? this.isBlocked,
       companyName: companyName ?? this.companyName,
+      isBlocked: isBlocked ?? this.isBlocked,
     );
   }
 
   Map<String, dynamic> toMap() {
     return {
       'id': id,
-      'isBlocked': isBlocked,
       'companyName': companyName,
+      'isBlocked': isBlocked,
     };
   }
 
@@ -49,16 +49,16 @@ class SkillList {
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
 
-    return other is SkillList && other.id == id && other.isBlocked == isBlocked && other.companyName == companyName;
+    return other is SkillList && other.id == id && other.companyName == companyName && other.isBlocked == isBlocked;
   }
 
   @override
   int get hashCode {
-    return id.hashCode ^ isBlocked.hashCode ^ companyName.hashCode;
+    return id.hashCode ^ companyName.hashCode ^ isBlocked.hashCode;
   }
 
   @override
   String toString() {
-    return 'SkillList(id: $id, isBlocked: $isBlocked, companyName: $companyName)';
+    return 'SkillList(id: $id, companyName: $companyName, isBlocked: $isBlocked)';
   }
 }

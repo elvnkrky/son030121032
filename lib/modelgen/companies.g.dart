@@ -2,58 +2,58 @@ import 'dart:convert';
 
 class Companies {
   const Companies({
-    this.totalReview,
-    required this.id,
-    this.companyRatting,
     required this.companyName,
     this.companyImage,
+    this.totalReview,
+    this.companyRatting,
+    required this.id,
   });
 
   factory Companies.fromMap(Map<String, dynamic> map) {
     return Companies(
-      totalReview: map['totalReview'],
-      id: map['id'].toInt(),
-      companyRatting: map['companyRatting']?.toDouble(),
       companyName: map['companyName'],
       companyImage: map['companyImage'],
+      totalReview: map['totalReview'],
+      companyRatting: map['companyRatting']?.toDouble(),
+      id: map['id'].toInt(),
     );
   }
 
   factory Companies.fromJson(String source) => Companies.fromMap(json.decode(source));
 
-  final String? totalReview;
-
-  final int id;
-
-  final double? companyRatting;
-
   final String companyName;
 
   final String? companyImage;
 
+  final String? totalReview;
+
+  final double? companyRatting;
+
+  final int id;
+
   Companies copyWith({
-    String? totalReview,
-    int? id,
-    double? companyRatting,
     String? companyName,
     String? companyImage,
+    String? totalReview,
+    double? companyRatting,
+    int? id,
   }) {
     return Companies(
-      totalReview: totalReview ?? this.totalReview,
-      id: id ?? this.id,
-      companyRatting: companyRatting ?? this.companyRatting,
       companyName: companyName ?? this.companyName,
       companyImage: companyImage ?? this.companyImage,
+      totalReview: totalReview ?? this.totalReview,
+      companyRatting: companyRatting ?? this.companyRatting,
+      id: id ?? this.id,
     );
   }
 
   Map<String, dynamic> toMap() {
     return {
-      'totalReview': totalReview,
-      'id': id,
-      'companyRatting': companyRatting,
       'companyName': companyName,
       'companyImage': companyImage,
+      'totalReview': totalReview,
+      'companyRatting': companyRatting,
+      'id': id,
     };
   }
 
@@ -64,20 +64,20 @@ class Companies {
     if (identical(this, other)) return true;
 
     return other is Companies &&
-        other.totalReview == totalReview &&
-        other.id == id &&
-        other.companyRatting == companyRatting &&
         other.companyName == companyName &&
-        other.companyImage == companyImage;
+        other.companyImage == companyImage &&
+        other.totalReview == totalReview &&
+        other.companyRatting == companyRatting &&
+        other.id == id;
   }
 
   @override
   int get hashCode {
-    return totalReview.hashCode ^ id.hashCode ^ companyRatting.hashCode ^ companyName.hashCode ^ companyImage.hashCode;
+    return companyName.hashCode ^ companyImage.hashCode ^ totalReview.hashCode ^ companyRatting.hashCode ^ id.hashCode;
   }
 
   @override
   String toString() {
-    return 'Companies(totalReview: $totalReview, id: $id, companyRatting: $companyRatting, companyName: $companyName, companyImage: $companyImage)';
+    return 'Companies(companyName: $companyName, companyImage: $companyImage, totalReview: $totalReview, companyRatting: $companyRatting, id: $id)';
   }
 }
